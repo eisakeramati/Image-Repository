@@ -63,7 +63,7 @@ app.use(express.static("public"));
 
 app.get("/", function (req, res) {
     if (req.isAuthenticated()) {
-        res.render('main', {opt: 1});
+        res.render('profile', {images: req.user.images});
     } else {
         res.render('main', {opt: 0});
     }
@@ -71,7 +71,7 @@ app.get("/", function (req, res) {
 
 app.get("/register", function (req, res) {
     if (req.isAuthenticated()) {
-        res.render('main_signup', {opt: 1});
+        res.render('profile', {images: req.user.images});
     } else {
         res.render('main_signup', {opt: 0});
     }
