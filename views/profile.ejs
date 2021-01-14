@@ -1,6 +1,7 @@
 <%- include("header") -%>
 <h2 style="text-align:center; margin-top: 80px; font-family: 'Nanum Gothic', sans-serif;">Your Images are here!</h2>
-<p style="text-align:center;">Your top 3 images are here plus you can search for your images by the description you entered for it.</p>
+<p style="text-align:center;">Your top 3 images are here plus you can search for your images by the description you entered for it. You can add images to your </p>
+<p style="text-align:center;"> repository by clicking on the dropdown list on top right and selecting upload.</p>
 <form class="form2 w-50" style="margin-inline: auto" action="/profile" method="post" >
     <div class="form-group">
         <input name="description" class="form-control" placeholder="Search for your image!" >
@@ -10,6 +11,13 @@
 
 <div class="container">
     <div class="row">
+        <% if (images.length==0){%>
+            <div style="margin: auto">
+                <p>
+                    You either have no images or your search results were empty!
+                </p>
+            </div>
+        <%}%>
         <% for (var i = 0; i < (images.length<3 ? images.length: 3); i++){ %>
         <div class="col panel">
             <div class="row">
