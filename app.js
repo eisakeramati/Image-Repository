@@ -37,12 +37,14 @@ userSchema.plugin(passportLocalMongoose);
 const User = new mongoose.model("User", userSchema);
 
 passport.use(User.createStrategy());
-passport.serializeUser(function (user, done) {
-    done(null, user);
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
 });
 
-passport.deserializeUser(function (user, done) {
-    done(null, user);
+passport.deserializeUser(function(id, done) {
+    User.findById(id, function(err, user) {
+        done(err, user);
+    });
 });
 
 var storage = multer.diskStorage({
@@ -118,8 +120,16 @@ app.post("/delete", function (req, res) {
                 }
                 ;
             });
+        res.redirect('profile');
     }
-    res.render('profile', {images: list});
+});
+
+app.get("/delete", function (req, res) {
+    if (req.isAuthenticated()) {
+        res.render('profile', {images: req.user.images});
+    } else {
+
+    }
 });
 
 app.get("/logout", function (req, res) {
@@ -182,7 +192,8 @@ app.post('/upload', upload.single('myFile'), (req, res, next) => {
                 ;
             });
     }
-    res.render('profile', {images: req.user.images});
+    res.redirect('profile');
+
 })
 
 
@@ -202,5 +213,5 @@ app.post("/register", function (req, res) {
 
 app.listen(process.env.PORT || 3000, function() {
     console.log('server listening on port 3000');
-})
+});
 
