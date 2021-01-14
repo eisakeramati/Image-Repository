@@ -1,0 +1,19 @@
+<%- include("head") -%>
+<h1 style="text-align:-webkit-center; margin-top: 80px; font-family: 'Nanum Gothic', sans-serif;">Eisa's Image Repository</h1>
+<p style="text-align:center;">Log into your account by entering your email and password</p>
+<form class="form w-50" style="margin-inline: auto" action="/" method="post" >
+    <div class="form-group ">
+        <label for="exampleInputEmail1">email</label>
+        <input name="username" class="form-control" placeholder="Enter email" >
+        <label for="exampleInputEmail1">password</label>
+        <input name="password" class="form-control" type="password" placeholder="Enter password">
+    </div>
+    <% if (opt==1){ %>
+        <div style="border-radius: 3px; background-color: orangered"><p style="padding: 10px">
+                Username or password is incorrect!</p></div>
+    <%}%>
+    <button type="submit" class="btn btn-secondary">Submit</button>
+    <br>
+    <a href="/register">Not a member yet? click here to sign up!</a>
+</form>
+<%- include("foot") -%>

@@ -1,0 +1,14 @@
+<%- include("header") -%>
+<h2 style="text-align:center; margin-top: 80px; font-family: 'Nanum Gothic', sans-serif;">Upload your Images</h2>
+<p style="text-align:center;">Please also provide a little info on each image!</p>
+<form class="form w-50" style="margin-inline: auto" action="/upload" enctype="multipart/form-data" method="POST">
+    <div class="form-group ">
+        <input type="file" class="form-item" name="myFile"/>
+        <input name="desc" class="form-control form-item" placeholder="Enter a description for the image." >
+        <input name="loc" class="form-control form-item" placeholder="Enter the location where image was taken." >
+        <input name="date" class="form-control form-item" placeholder="Enter the date of the image." >
+        <input type="submit" class="form-item" value="Upload a file"/>
+    </div>
+</form>
+
+<%- include("foot") -%>

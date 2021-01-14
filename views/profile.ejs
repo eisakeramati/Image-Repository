@@ -1,0 +1,36 @@
+<%- include("header") -%>
+<h2 style="text-align:center; margin-top: 80px; font-family: 'Nanum Gothic', sans-serif;">Your Images are here!</h2>
+<p style="text-align:center;">Your top 3 images are here plus you can search for your images by the description you entered for it.</p>
+<form class="form2 w-50" style="margin-inline: auto" action="/profile" method="post" >
+    <div class="form-group">
+        <input name="description" class="form-control" placeholder="Search for your image!" >
+    </div>
+    <button type="submit" class="btn btn-secondary"><img class="search" src="/search.png"></button>
+</form>
+
+<div class="container">
+    <div class="row">
+        <% for (var i = 0; i < (images.length<3 ? images.length: 3); i++){ %>
+        <div class="col panel">
+            <div class="row">
+                <div class="col">
+                    <img class="img-panel" src=<%= "/"+images[i].img %>>
+                </div>
+                <div class="col text-panel">
+                    <p><%= images[i].desc %></p>
+                    <p><%= images[i].location %></p>
+                    <p><%= images[i].Date %></p>
+                    <form class="form2 w-50" style="margin-inline: auto" action="/delete" method="post" >
+                        <div class="form-group">
+                            <input style="" type="text" name="id" value=<%= images[i]._id %> hidden>
+                            <button type="submit" class="btn btn-secondary"><img class="search" src="/trash.png"></button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+<%- include("foot") -%>
