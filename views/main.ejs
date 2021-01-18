@@ -1,12 +1,13 @@
 <%- include("head") -%>
 <h1 style="text-align:-webkit-center; margin-top: 80px; font-family: 'Nanum Gothic', sans-serif;">Eisa's Image Repository</h1>
 <p style="text-align:center;">Log into your account by entering your email and password</p>
+<p style="text-align:center;">if you don't want creat an account and use the demo mode just use the default values.</p>
 <form class="form w-50" style="margin-inline: auto" action="/" method="post" >
     <div class="form-group ">
         <label for="exampleInputEmail1">email</label>
-        <input name="username" class="form-control" placeholder="Enter email" >
+        <input name="username" class="form-control" value="test@gmail.com" placeholder="Enter email" >
         <label for="exampleInputEmail1">password</label>
-        <input name="password" class="form-control" type="password" placeholder="Enter password">
+        <input name="password" class="form-control" type="password" value="test123" placeholder="Enter password">
     </div>
     <% if (opt==1){ %>
         <div style="border-radius: 3px; background-color: orangered"><p style="padding: 10px">
